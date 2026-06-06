@@ -28,4 +28,4 @@ module "ec2" {
   sg_id         = module.security_group.sg_id
 }
 
-
+# Testing GitHub Actions Pipeline triggering
