@@ -7,24 +7,29 @@ A structured, production-ready, and modular Terraform repository designed to pro
 The repository isolates infrastructure blueprints from live configurations using a **Modular Environment Architecture**. This ensures that configurations for development, staging, and production remain completely decoupled and secure.
 
 ```text
+Lab Project Folder Structure for Terraform 
+
 soch-terraform-project/
+
 ├── environments/
-│   ├── dev/                  # Development environment configuration
-│   │   ├── backend.tf        # Isolated remote state configuration for Dev
-│   │   ├── main.tf           # Dev root configuration (instantiates modules)
-│   │   ├── variables.tf      # Dev input variable declarations
-│   │   ├── terraform.tfvars  # Dev environment-specific values (Secrets/IDs)
-│   │   └── outputs.tf        # Dev output parameters
-│   ├── stage/                # Staging environment configuration
-│   └── prod/                 # Production environment configuration
+│   ├── dev/
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   ├── terraform.tfvars
+│   │   └── outputs.tf
+│   │
+│   ├── stage/
+│   └── prod/
 │
-├── modules/                  # Reusable, version-controlled infrastructure blueprints
+├── modules/
 │   ├── ec2/
-│   │   ├── main.tf           # Standard AWS EC2 resource definitions
-│   │   ├── variables.tf      # Module input parameters
-│   │   └── outputs.tf        # Module output variables passed to other resources
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   │
 │   └── security-group/
-│       ├── main.tf           # Standard AWS Security Group definitions
+│       ├── main.tf
 │       ├── variables.tf
 │       └── outputs.tf
-└── .gitignore                # Explicit patterns excluding local state, binaries, and secrets
+│
+└── backend.tf
