@@ -10,7 +10,8 @@ The repository isolates infrastructure blueprints from live configurations using
 Lab Project Folder Structure for Terraform 
 
 soch-terraform-project/
-
+├── keys/
+  ├── soch-dev-server-key-pair-tf
 ├── environments/
 │   ├── dev/
 │   │   ├── main.tf
