@@ -5,4 +5,5 @@ resource "aws_instance" "this" {
   tags = {
     name = "soch-dev-server"
   }
+  key_name = var.key_name
 }

@@ -26,6 +26,7 @@ module "ec2" {
   ami_id        = var.ami_id
   instance_type = var.instance_type
   sg_id         = module.security_group.sg_id
+   key_name = var.key_name
 }
 
-# Testing GitHub Actions Pipeline triggering
+
