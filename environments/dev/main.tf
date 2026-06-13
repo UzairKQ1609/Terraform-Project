@@ -9,7 +9,7 @@ terraform {
 }
 provider "aws" {
   region  = var.aws_region
-  profile = "uzair-aws-admin"
+  # profile = "uzair-aws-admin"
 }
 
 data "aws_vpc" "default" {
