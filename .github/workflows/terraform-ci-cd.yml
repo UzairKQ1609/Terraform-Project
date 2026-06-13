@@ -7,15 +7,9 @@ on:
 
 jobs:
   terraform:
-
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: environments/dev
-
     steps:
-
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -29,17 +23,22 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
-      - name: Terraform Init
-        run: terraform init
-
+      # 1. Format check across the entire repo so it doesn't fail on your modules
       - name: Terraform Format Check
         run: terraform fmt -check -recursive
 
+      # 2. Run Init directly targeting the dev environment configuration
+      - name: Terraform Init
+        run: terraform -chdir=environments/dev init
+
+      # 3. Validate the dev configuration
       - name: Terraform Validate
-        run: terraform validate
+        run: terraform -chdir=environments/dev validate
 
+      # 4. Generate the plan for dev
       - name: Terraform Plan
-        run: terraform plan
+        run: terraform -chdir=environments/dev plan
 
+      # 5. Apply the changes to dev
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: terraform -chdir=environments/dev apply -auto-approve
