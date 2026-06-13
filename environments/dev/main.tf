@@ -26,10 +26,10 @@ module "ec2" {
   ami_id        = var.ami_id
   instance_type = var.instance_type
   sg_id         = module.security_group.sg_id
-   key_name = var.key_name
+  key_name      = var.key_name
 }
 module "s3" {
-  source = "../../modules/s3"
+  source      = "../../modules/s3"
   bucket_name = var.bucket_name
   environment = var.environment
 }
